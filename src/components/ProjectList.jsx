@@ -1,9 +1,9 @@
 export default function ProjectList({ projects, onCreate }) {
   return (
     <article className="project-list">
-      <p>List of projects</p>
+      <h2>Your projects</h2>
       <section>
-        <button onClick={onCreate}>Add Project</button>
+        <button onClick={onCreate}>+ Add Project</button>
         <ul>
           {projects.map((project) => {
             return <li>{project.title}</li>;

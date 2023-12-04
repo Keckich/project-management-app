@@ -1,9 +1,41 @@
+body {
+  margin-left: 0;
+}
+
 main {
   display: flex;
 }
 
 .project-list {
-  width: 30%;
+  width: 15%;
+  background-color: #0a0700;
+  border-radius: 0 10px 10px 0;
+  padding-left: 30px;
+  padding-top: 30px;
+  text-transform: uppercase;
+}
+
+.project-list h2 {
+  color: #f5f0e4;
+}
+
+.project-list button {
+  background-color: #2b2820;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #aba189;
+  font-weight: bold;
+  position: relative;
+}
+
+.project-list button:hover {
+  cursor: pointer;
+  background-color: #423f36;
+}
+
+.project-list button:active {
+  top: 3px;
 }
 
 .project-section {
