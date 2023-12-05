@@ -6,7 +6,7 @@ main {
   display: flex;
 }
 
-.project-list {
+.project-list-container {
   width: 15%;
   background-color: #0a0700;
   border-radius: 0 10px 10px 0;
@@ -15,11 +15,11 @@ main {
   text-transform: uppercase;
 }
 
-.project-list h2 {
+.project-list-container h2 {
   color: #f5f0e4;
 }
 
-.project-list button {
+.project-list-container button {
   background-color: #2b2820;
   padding: 10px;
   border-radius: 5px;
@@ -29,13 +29,22 @@ main {
   position: relative;
 }
 
-.project-list button:hover {
+.project-list-container button:hover {
   cursor: pointer;
   background-color: #423f36;
 }
 
-.project-list button:active {
+.project-list-container button:active {
   top: 3px;
+}
+
+.project-list-container .project-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.project-list li {
+  color: #aba189;
 }
 
 .project-section {
