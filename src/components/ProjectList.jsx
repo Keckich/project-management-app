@@ -1,6 +1,6 @@
 export default function ProjectList({ projects, onCreate, onClick }) {
   return (
-    <article className="project-list-container">
+    <aside className="project-list-container">
       <h2>Your projects</h2>
       <section>
         <button onClick={onCreate}>+ Add Project</button>
@@ -10,6 +10,6 @@ export default function ProjectList({ projects, onCreate, onClick }) {
           })}
         </ul>
       </section>
-    </article>
+    </aside>
   );
 }

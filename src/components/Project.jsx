@@ -14,24 +14,34 @@ export default function Project({ project, onDelete }) {
       return prevList.splice(index, 1);
     });
   };
-  
+
   const task = useRef();
 
   return (
-    <article>
-      <section>
-        <h1>{project.title}</h1>
-        <span>{project.date}</span>
+    <article className="project-page">
+      <section className="project-info">
+        <div className="project-header">
+          <div>
+            <h1>{project.title}</h1>
+            <span>{project.date}</span>
+          </div>
+
+          <button className="project-action-button" onClick={onDelete}>
+            Delete
+          </button>
+        </div>
         <p>{project.description}</p>
-        <button onClick={onDelete}>Delete</button>
       </section>
 
       <hr />
 
-      <section>
+      <section className="tasks-section">
         <h2>Tasks</h2>
         <input ref={task} type="text" />
-        <button onClick={() => handleTaskList(task.current.value)}>
+        <button
+          className="project-action-button"
+          onClick={() => handleTaskList(task.current.value)}
+        >
           Add Task
         </button>
         {!!taskList && <p>This project does not have any tasks yet.</p>}

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export default function CreateProject({ onSave }) {
+export default function CreateProject({ onSave, onCancel }) {
   const title = useRef();
   const description = useRef();
   const date = useRef();
@@ -8,8 +8,8 @@ export default function CreateProject({ onSave }) {
   return (
     <>
       <section className="action-buttons">
-        <button>Cancel</button>
-        <button
+        <button onClick={onCancel} className="project-action-button">Cancel</button>
+        <button className="save-button project-action-button"
           onClick={() =>
             onSave({
               title: title.current.value,

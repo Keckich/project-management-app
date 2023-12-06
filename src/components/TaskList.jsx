@@ -1,12 +1,12 @@
 export default function TaskList({ tasks, onDelete }) {
   const items = tasks.map((task, index) => {
     return (
-      <div key={index}>
+      <div className="task-container" key={index}>
         <li>{task}</li>
-        <button onClick={() => onDelete(index)}>Clear</button>
+        <button className="project-action-button" onClick={() => onDelete(index)}>Clear</button>
       </div>
     );
   });
 
-  return <ul>{items}</ul>;
+  return <ul className="task-list">{items}</ul>;
 }

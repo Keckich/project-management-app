@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
+
+html {
+  font-family: "Quicksand", sans-serif;
+}
+
+input,
+button {
+  font-family: "Quicksand", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
 body {
   margin-left: 0;
 }
@@ -8,7 +23,7 @@ main {
 
 .project-list-container {
   width: 15%;
-  background-color: #0a0700;
+  background-color: #120d00;
   border-radius: 0 10px 10px 0;
   padding-left: 30px;
   padding-top: 30px;
@@ -49,7 +64,12 @@ main {
 
 .project-section {
   width: 30%;
-  margin-top: 10%;
+  margin-top: 90px;
+  margin-left: 30px;
+}
+
+.no-project-page {
+  width: 70%;
 }
 
 .create-container {
@@ -61,6 +81,7 @@ main {
 .input-data {
   width: -webkit-fill-available;
   min-height: 20px;
+  box-shadow: 0px 3px 0px 0px #bdb9af;
 }
 
 .action-buttons {
@@ -68,4 +89,103 @@ main {
   justify-content: flex-end;
   margin-bottom: 10px;
   gap: 10px;
+}
+
+.project-page {
+  margin-left: 30px;
+}
+
+.project-action-button {
+  height: 36px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  width: 80px;
+  border-radius: 6px;
+}
+
+.project-action-button:hover {
+  color: #a8a396;
+}
+
+.save-button {
+  background-color: #120d00;
+  color: white;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-header h1 {
+  font-size: 30px;
+  margin-top: 7px;
+  margin-bottom: 10px;
+  color: #302201;
+}
+
+.project-header span {
+  color: #aba189;
+}
+
+.project-header .project-action-button {
+  margin-top: 14px;
+}
+
+input,
+textarea {
+  background-color: #dbd7ce;
+  border: 0;
+}
+
+input {
+  height: 30px;
+}
+
+textarea {
+  height: 50px;
+}
+
+.tasks-section input {
+  width: 50%;
+}
+
+.task-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f7f5f0;
+  padding: 25px 15px;
+  margin-bottom: 15px;
+}
+
+.task-container li {
+  padding-top: 2px;
+}
+
+.no-project-img {
+  height: 100px;
+}
+
+.no-project-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.no-project-info h2 {
+  margin-bottom: 0;
+}
+
+.no-project-info button {
+  background-color: #120d00;
+  color: white;
+  width: 180px;
+  margin-top: 30px;
 }

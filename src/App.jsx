@@ -4,12 +4,14 @@ import CreateProject from "./components/CreateProject";
 import ProjectList from "./components/ProjectList";
 import Project from "./components/Project";
 
+import noProjectImg from "./assets/no-projects.png";
+
 var defaultProjectList = [
   {
-    title: 'project1',
-    description: 'desc1',
-    date: '2023-12-15'
-  }  
+    title: "project1",
+    description: "desc1",
+    date: "2023-12-15",
+  },
 ];
 
 function App() {
@@ -30,7 +32,7 @@ function App() {
 
   const openProjectPage = (e) => {
     setIsProjectPage(true);
-    selectedProject.current = projectList[+e.target.id]
+    selectedProject.current = projectList[+e.target.id];
     closeCreatingProjectPage();
   };
 
@@ -47,11 +49,11 @@ function App() {
   };
 
   const deleteProject = (index) => {
-    setProjectList(prevList => {
+    setProjectList((prevList) => {
       return prevList.splice(index, 1);
     });
     closeProjectPage();
-  }
+  };
 
   return (
     <main>
@@ -60,11 +62,27 @@ function App() {
         onCreate={openCreatingProjectPage}
         onClick={openProjectPage}
       />
-      <article className="project-section">
-        {isProjectPage && <Project project={selectedProject.current} onDelete={deleteProject} />}
-        {isCreatingProject && <CreateProject onSave={handleProjectList} />}
-        {!isCreatingProject && (
-          <button onClick={openCreatingProjectPage}>Create new project</button>
+      <article
+        className={`${
+          !isCreatingProject && !isProjectPage ? "no-project-page" : ""
+        } project-section`}
+      >
+        {isProjectPage && (
+          <Project project={selectedProject.current} onDelete={deleteProject} />
+        )}
+        {isCreatingProject && <CreateProject onSave={handleProjectList} onCancel={closeCreatingProjectPage} />}
+        {!isCreatingProject && !isProjectPage && (
+          <div className="no-project-info">
+            <img className="no-project-img" src={noProjectImg} />
+            <h2>No Project Selected</h2>
+            <span>Select a project or get started with a new one</span>
+            <button
+              className="project-action-button"
+              onClick={openCreatingProjectPage}
+            >
+              Create new project
+            </button>
+          </div>
         )}
       </article>
     </main>
