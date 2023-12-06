@@ -3,7 +3,7 @@ export default function TaskList({ tasks, onDelete }) {
     return (
       <div className="task-container" key={index}>
         <li>{task}</li>
-        <button className="project-action-button" onClick={() => onDelete(index)}>Clear</button>
+        <button className="project-action-button" onClick={() => onDelete(task)}>Clear</button>
       </div>
     );
   });

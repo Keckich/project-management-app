@@ -20,12 +20,6 @@ function App() {
   const [projectList, setProjectList] = useState(defaultProjectList);
   const [project, setProject] = useState();
 
-  const handleProject = (newProject) => {
-    setProject(newProject);
-  }
-
-  let selectedProject = useRef();
-
   const openCreatingProjectPage = () => {
     setIsCreatingProject(true);
     closeProjectPage();
@@ -53,9 +47,9 @@ function App() {
     closeCreatingProjectPage();
   };
 
-  const deleteProject = (index) => {
+  const deleteProject = (project) => {
     setProjectList((prevList) => {
-      return prevList.splice(index, 1);
+      return prevList.filter(item => item != project);
     });
     closeProjectPage();
   };

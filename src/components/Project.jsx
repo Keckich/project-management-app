@@ -8,10 +8,10 @@ export default function Project({ project, onDelete }) {
       return [...prevList, newTask];
     });
   };
-
-  const deleteTask = (index) => {
+  
+  const deleteTask = (task) => {
     setTaskList((prevList) => {
-      return prevList.splice(index, 1);
+      return prevList.filter(item => item != task);
     });
   };
 
@@ -26,7 +26,7 @@ export default function Project({ project, onDelete }) {
             <span>{project.date}</span>
           </div>
 
-          <button className="project-action-button" onClick={onDelete}>
+          <button className="project-action-button" onClick={() => onDelete(project)}>
             Delete
           </button>
         </div>
