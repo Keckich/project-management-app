@@ -9,3 +9,8 @@ Application provides an ability to create projects by entering Title, Descripton
 ```bash
 $ npm install
 ```
+## Running the app
+
+```bash
+$ npm run dev
+```
