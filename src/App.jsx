@@ -18,6 +18,11 @@ function App() {
   const [isCreatingProject, setIsCreatingProject] = useState();
   const [isProjectPage, setIsProjectPage] = useState();
   const [projectList, setProjectList] = useState(defaultProjectList);
+  const [project, setProject] = useState();
+
+  const handleProject = (newProject) => {
+    setProject(newProject);
+  }
 
   let selectedProject = useRef();
 
@@ -31,8 +36,8 @@ function App() {
   };
 
   const openProjectPage = (e) => {
+    setProject(projectList[+e.target.id]);
     setIsProjectPage(true);
-    selectedProject.current = projectList[+e.target.id];
     closeCreatingProjectPage();
   };
 
@@ -68,7 +73,7 @@ function App() {
         } project-section`}
       >
         {isProjectPage && (
-          <Project project={selectedProject.current} onDelete={deleteProject} />
+          <Project project={project} onDelete={deleteProject} />
         )}
         {isCreatingProject && <CreateProject onSave={handleProjectList} onCancel={closeCreatingProjectPage} />}
         {!isCreatingProject && !isProjectPage && (

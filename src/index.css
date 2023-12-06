@@ -60,6 +60,13 @@ main {
 
 .project-list li {
   color: #aba189;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.project-list li:hover {
+  color: #dbceaf;
+  cursor: pointer;
 }
 
 .project-section {
