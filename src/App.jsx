@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 
-import CreateProject from "./components/CreateProject";
-import ProjectList from "./components/ProjectList";
-import Project from "./components/Project";
+import CreateProject from "./components/CreateProject/CreateProject";
+import ProjectList from "./components/ProjectList/ProjectList";
+import Project from "./components/Project/Project";
 
 import noProjectImg from "./assets/no-projects.png";
+import HomePage from "./components/HomePage/HomePage";
 
 var defaultProjectList = [
   {
@@ -49,7 +50,7 @@ function App() {
 
   const deleteProject = (project) => {
     setProjectList((prevList) => {
-      return prevList.filter(item => item != project);
+      return prevList.filter((item) => item != project);
     });
     closeProjectPage();
   };
@@ -69,19 +70,17 @@ function App() {
         {isProjectPage && (
           <Project project={project} onDelete={deleteProject} />
         )}
-        {isCreatingProject && <CreateProject onSave={handleProjectList} onCancel={closeCreatingProjectPage} />}
+        {isCreatingProject && (
+          <CreateProject
+            onSave={handleProjectList}
+            onCancel={closeCreatingProjectPage}
+          />
+        )}
         {!isCreatingProject && !isProjectPage && (
-          <div className="no-project-info">
-            <img className="no-project-img" src={noProjectImg} />
-            <h2>No Project Selected</h2>
-            <span>Select a project or get started with a new one</span>
-            <button
-              className="project-action-button"
-              onClick={openCreatingProjectPage}
-            >
-              Create new project
-            </button>
-          </div>
+          <HomePage
+            noProjectImg={noProjectImg}
+            openCreatingProjectPage={openCreatingProjectPage}
+          />
         )}
       </article>
     </main>

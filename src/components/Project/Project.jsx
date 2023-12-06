@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
-import TaskList from "./TaskList";
+import TaskList from "../TaskList/TaskList";
+
+import './Project.css';
 
 export default function Project({ project, onDelete }) {
   const [taskList, setTaskList] = useState([]);

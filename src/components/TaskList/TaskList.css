@@ -1,0 +1,16 @@
+.task-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f7f5f0;
+  padding: 25px 15px;
+  margin-bottom: 15px;
+}
+
+.task-container li {
+  padding-top: 2px;
+}

@@ -1,3 +1,5 @@
+import './ProjectList.css';
+
 export default function ProjectList({ projects, onCreate, onClick }) {
   return (
     <aside className="project-list-container">

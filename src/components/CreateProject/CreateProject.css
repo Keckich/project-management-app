@@ -1,0 +1,17 @@
+.input-data {
+  width: -webkit-fill-available;
+  min-height: 20px;
+  box-shadow: 0px 3px 0px 0px #bdb9af;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.project-action-button.save-button {
+  background-color: #120d00;
+  color: white;
+}

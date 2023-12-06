@@ -1,5 +1,7 @@
 import { useRef } from "react";
 
+import './CreateProject.css';
+
 export default function CreateProject({ onSave, onCancel }) {
   const title = useRef();
   const description = useRef();

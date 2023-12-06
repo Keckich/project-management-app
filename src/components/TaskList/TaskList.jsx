@@ -1,3 +1,5 @@
+import './TaskList.css';
+
 export default function TaskList({ tasks, onDelete }) {
   const items = tasks.map((task, index) => {
     return (

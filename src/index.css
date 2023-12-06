@@ -29,55 +29,6 @@ main {
   display: flex;
 }
 
-.project-list-container {
-  width: 15%;
-  background-color: #120d00;
-  border-radius: 0 10px 10px 0;
-  padding-left: 30px;
-  padding-top: 30px;
-  text-transform: uppercase;
-  margin-top: 35px;
-}
-
-.project-list-container h2 {
-  color: #f5f0e4;
-}
-
-.project-list-container button {
-  background-color: #2b2820;
-  padding: 10px;
-  border-radius: 5px;
-  border-color: transparent;
-  color: #aba189;
-  font-weight: bold;
-  position: relative;
-}
-
-.project-list-container button:hover {
-  cursor: pointer;
-  background-color: #423f36;
-}
-
-.project-list-container button:active {
-  top: 3px;
-}
-
-.project-list-container .project-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.project-list li {
-  color: #aba189;
-  margin-bottom: 10px;
-  width: fit-content;
-}
-
-.project-list li:hover {
-  color: #dbceaf;
-  cursor: pointer;
-}
-
 .project-section {
   width: 30%;
   margin-top: 90px;
@@ -92,19 +43,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-.input-data {
-  width: -webkit-fill-available;
-  min-height: 20px;
-  box-shadow: 0px 3px 0px 0px #bdb9af;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-  gap: 10px;
 }
 
 .project-page {
@@ -124,31 +62,6 @@ main {
   color: #a8a396;
 }
 
-.save-button {
-  background-color: #120d00;
-  color: white;
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.project-header h1 {
-  font-size: 30px;
-  margin-top: 7px;
-  margin-bottom: 10px;
-  color: #302201;
-}
-
-.project-header span {
-  color: #aba189;
-}
-
-.project-header .project-action-button {
-  margin-top: 14px;
-}
-
 input,
 textarea {
   background-color: #dbd7ce;
@@ -161,27 +74,6 @@ input {
 
 textarea {
   height: 50px;
-}
-
-.tasks-section input {
-  width: 50%;
-}
-
-.task-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.task-container {
-  display: flex;
-  justify-content: space-between;
-  background-color: #f7f5f0;
-  padding: 25px 15px;
-  margin-bottom: 15px;
-}
-
-.task-container li {
-  padding-top: 2px;
 }
 
 .no-project-img {
