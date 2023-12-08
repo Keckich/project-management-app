@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import CreateProject from "./components/CreateProject/CreateProject";
 import ProjectList from "./components/ProjectList/ProjectList";
@@ -16,72 +16,92 @@ var defaultProjectList = [
 ];
 
 function App() {
-  const [isCreatingProject, setIsCreatingProject] = useState();
-  const [isProjectPage, setIsProjectPage] = useState();
-  const [projectList, setProjectList] = useState(defaultProjectList);
-  const [project, setProject] = useState();
+  const [projectsState, setProjectsState] = useState({
+    projects: defaultProjectList,
+    selectedProject: undefined,
+  });
 
-  const openCreatingProjectPage = () => {
-    setIsCreatingProject(true);
-    closeProjectPage();
-  };
-
-  const closeCreatingProjectPage = () => {
-    setIsCreatingProject(false);
-  };
-
-  const openProjectPage = (e) => {
-    setProject(projectList[+e.target.id]);
-    setIsProjectPage(true);
-    closeCreatingProjectPage();
-  };
-
-  const closeProjectPage = () => {
-    setIsProjectPage(false);
-  };
-
-  const handleProjectList = (newProject) => {
-    setProjectList((prevList) => {
-      console.log([...prevList, newProject]);
-      return [...prevList, newProject];
+  const openCreatingPage = () => {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProject: null,
+      };
     });
-    closeCreatingProjectPage();
+  };
+
+  const openHomePage = () => {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProject: undefined,
+      };
+    });
+  };
+
+  const addNewProject = (newProject) => {
+    setProjectsState((prevState) => {
+      return {
+        projects: [...prevState.projects, newProject],
+        selectedProject: undefined,
+      };
+    });
   };
 
   const deleteProject = (project) => {
-    setProjectList((prevList) => {
-      return prevList.filter((item) => item != project);
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        projects: prevState.projects.filter((item) => item != project),
+      };
     });
-    closeProjectPage();
+    openHomePage();
+  };
+
+  let content;
+
+  if (projectsState.selectedProject === undefined) {
+    content = (
+      <HomePage
+        noProjectImg={noProjectImg}
+        openCreatingProjectPage={openCreatingPage}
+      />
+    );
+  } else if (projectsState.selectedProject == null) {
+    content = (
+      <CreateProject onSave={addNewProject} onCancel={openHomePage} />
+    );
+  } else {
+    content = (
+      <Project
+        project={projectsState.selectedProject}
+        onDelete={deleteProject}
+      />
+    );
+  }
+
+  const openProjectPage = (e) => {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProject: prevState.projects[+e.target.id],
+      };
+    });
   };
 
   return (
     <main>
       <ProjectList
-        projects={projectList}
-        onCreate={openCreatingProjectPage}
+        projects={projectsState.projects}
+        onCreate={openCreatingPage}
         onClick={openProjectPage}
       />
       <article
         className={`${
-          !isCreatingProject && !isProjectPage ? "no-project-page" : ""
+          projectsState.selectedProject === undefined ? "no-project-page" : ""
         } project-section`}
       >
-        {isProjectPage && (
-          <Project project={project} onDelete={deleteProject} />
-        )}
-        {isCreatingProject && (
-          <CreateProject
-            onSave={handleProjectList}
-            onCancel={closeCreatingProjectPage}
-          />
-        )}
-        {!isCreatingProject && !isProjectPage && (
-          <HomePage
-            noProjectImg={noProjectImg}
-            openCreatingProjectPage={openCreatingProjectPage}
-          />
-        )}
+        {content}
       </article>
     </main>
   );
