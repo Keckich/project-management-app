@@ -12,12 +12,14 @@ var defaultProjectList = [
     title: "project1",
     description: "desc1",
     date: "2023-12-15",
+    id: Math.random(),
   },
 ];
 
 function App() {
   const [projectsState, setProjectsState] = useState({
     projects: defaultProjectList,
+    tasks: [],
     selectedProject: undefined,
   });
 
@@ -39,9 +41,15 @@ function App() {
     });
   };
 
-  const addNewProject = (newProject) => {
+  const addNewProject = (project) => {
     setProjectsState((prevState) => {
+      const newProject = {
+        ...project,
+        id: Math.random(),
+      };
+
       return {
+        ...prevState,
         projects: [...prevState.projects, newProject],
         selectedProject: undefined,
       };
@@ -58,6 +66,32 @@ function App() {
     openHomePage();
   };
 
+  const handleAddTask = (task) => {
+    setProjectsState((prevState) => {
+      console.log(task);
+      const taskId = Math.random();
+      const newTask = {
+        text: task,
+        projectId: prevState.selectedProject.id,
+        id: taskId,
+      };
+      
+      return {
+        ...prevState,
+        tasks: [newTask, ...prevState.tasks],
+      };
+    });
+  };
+
+  const handleDeleteTask = (task) => {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((item) => item.id != task.id),
+      };
+    });
+  };
+
   let content;
 
   if (projectsState.selectedProject === undefined) {
@@ -68,20 +102,22 @@ function App() {
       />
     );
   } else if (projectsState.selectedProject == null) {
-    content = (
-      <CreateProject onSave={addNewProject} onCancel={openHomePage} />
-    );
+    content = <CreateProject onSave={addNewProject} onCancel={openHomePage} />;
   } else {
     content = (
       <Project
         project={projectsState.selectedProject}
         onDelete={deleteProject}
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+        tasks={projectsState.tasks.filter(task => task.projectId == projectsState.selectedProject.id)}
       />
     );
   }
 
   const openProjectPage = (e) => {
     setProjectsState((prevState) => {
+      console.log(prevState);
       return {
         ...prevState,
         selectedProject: prevState.projects[+e.target.id],
